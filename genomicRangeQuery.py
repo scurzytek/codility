@@ -40,7 +40,6 @@
 def solution(S, P, Q):
 
     impact_factor = {'A': 1, 'C': 2, 'G': 3, 'T': 4}
-
     A = []
 
     for i in range(len(P)):
@@ -48,8 +47,8 @@ def solution(S, P, Q):
             if key in S[P[i]:Q[i]+1]:
                 A.append(impact_factor[key])
                 break
-
     return A
+
 
 #correct, but O(n*m)
 def solution(S, P, Q):
@@ -73,9 +72,8 @@ def solution(S, P, Q):
 
     return A
 
+
 #correct, but O(n*m)
-
-
 def solution(S, P, Q):
 
     T = [0, 'A', 'C', 'G', 'T']
