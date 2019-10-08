@@ -28,18 +28,42 @@
 # each element of array A is an integer within the range [1..1,000,000,000];
 # all but one of the values in A occur an even number of times.
 
+
+#SOLUTION 3: The best :)
 def solution(A):
-    A = sorted(A)
-    S = list(set(A))
+    bag = set()
+    for n in A:
+        if n in bag:
+            bag.remove(n)
+        else:
+            bag.add(n)
+    return bag.pop()
 
-    dict = {'a': 10}
+print(solution([1,2,3,5,1,2,3,3,3]))
 
-    while min(dict, key = lambda x: dict.get(x)) != 1:
+#SOLUTION 1: NOT SO GOOD
+def solution_A(A):
+    ocurrences = {}
 
-        for i in range(len(S)):
+    for element in A:
+        if element in ocurrences.keys():
+            ocurrences[element] += 1
+        else:
+            ocurrences[element] = 1
 
-            dict[S[i]] = A.count(S[i])
+    unique = min(ocurrences, key = ocurrences.get)
 
-    return min(dict, key = lambda x: dict.get(x))
+    return unique
 
-# print(solution([2,3,4,2,3,4,5]))
+
+#SOLUTION 2: NOT SO GOOD
+def solution_B(A):
+    # write your code in Python 3.6
+
+    uniqueInt = [x for x in A if A.count(x) == 1]
+
+    return uniqueInt[0]
+
+
+
+
